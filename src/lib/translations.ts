@@ -1,0 +1,244 @@
+export type Locale = "ru" | "uz";
+
+export const translations = {
+  ru: {
+    header: {
+      phone: "+1 (234) 567-890",
+      bookNow: "Записаться",
+      switchToLight: "Переключить на светлую тему",
+      switchToDark: "Переключить на темную тему",
+      lightMode: "Светлая тема",
+      darkMode: "Темная тема",
+      languageLabel: "Язык",
+    },
+    hero: {
+      badge: "Премиальная стоматология",
+      title: "Ваша идеальная улыбка начинается здесь",
+      description:
+        "Профессиональная стоматология в теплой и дружелюбной атмосфере. Мы заботимся о здоровье ваших зубов и красивой улыбке.",
+      bookButton: "Записаться на прием",
+      callNow: "Позвонить",
+      stats: {
+        experienceValue: "10+ лет",
+        experienceLabel: "Опыт",
+        patientsValue: "5000+",
+        patientsLabel: "Довольных пациентов",
+        ratingValue: "4.9/5",
+        ratingLabel: "Рейтинг",
+      },
+      trustTitle: "Проверенная забота",
+      trustSince: "С 2014 года",
+    },
+    services: {
+      title: "Наши услуги",
+      subtitle: "Комплексная стоматология под ваши потребности",
+      items: [
+        {
+          title: "Отбеливание зубов",
+          description:
+            "Профессиональное отбеливание для более яркой и уверенной улыбки всего за один визит.",
+        },
+        {
+          title: "Дентальные импланты",
+          description:
+            "Постоянное решение при отсутствии зубов, которое выглядит и ощущается естественно.",
+        },
+        {
+          title: "Брекеты и ортодонтия",
+          description:
+            "Выравнивание зубов современными ортодонтическими методами: прозрачные и классические варианты.",
+        },
+      ],
+    },
+    about: {
+      badge: "Ваш стоматолог",
+      title: "Д-р Майкл Чен",
+      yearsExperience: "Лет опыта",
+      paragraph1:
+        "Более 10 лет опыта в стоматологии. Д-р Чен обеспечивает высокое качество лечения с бережным подходом. Его приоритет - доверие, открытое общение и персональный план лечения.",
+      paragraph2:
+        "Специализируется на эстетической и восстановительной стоматологии, применяя современные технологии для наилучшего результата.",
+      educationTitle: "Продвинутое образование",
+      educationValue: "Harvard School of Dental Medicine, DDS",
+      specialistTitle: "Сертифицированный специалист",
+      specialistValue: "Сертификат по эстетической стоматологии",
+      careTitle: "Ориентация на пациента",
+      careValue: "Более 5000 довольных пациентов",
+    },
+    gallery: {
+      title: "Реальные результаты",
+      subtitle: "Посмотрите, как мы преображаем улыбки наших пациентов",
+      after: "После",
+      before: "До",
+      cases: ["Отбеливание зубов", "Преображение улыбки"],
+    },
+    testimonials: {
+      title: "Отзывы пациентов",
+      subtitle: "Реальные истории людей, которые доверили нам свою улыбку",
+      texts: [
+        "Д-р Чен и его команда преобразили мою улыбку. Результат отбеливания превзошел ожидания. Профессионально и очень внимательно!",
+        "Лучший опыт посещения стоматолога. Клиника современная, чистая, персонал очень заботливый. Импланты выглядят максимально естественно.",
+        "Я переживала из-за брекетов во взрослом возрасте, но д-р Чен сделал процесс комфортным. Теперь я обожаю свою улыбку!",
+      ],
+    },
+    booking: {
+      title: "Запись на прием",
+      subtitle: "Оставьте данные, и мы скоро вам перезвоним",
+      nameLabel: "Полное имя",
+      namePlaceholder: "Введите ваше имя",
+      phoneLabel: "Номер телефона",
+      submitButton: "Записаться",
+      notice: "Мы свяжемся с вами в течение 24 часов для подтверждения записи",
+      successTitle: "Спасибо!",
+      successMessage: "Мы скоро перезвоним для подтверждения записи.",
+    },
+    contact: {
+      title: "Как нас найти",
+      subtitle:
+        "Мы находимся в центре города, к нам удобно добраться и есть парковка",
+      addressTitle: "Адрес",
+      addressLine1: "123 Medical Plaza, Suite 456",
+      addressLine2: "Downtown District",
+      addressLine3: "New York, NY 10001",
+      phoneTitle: "Телефон",
+      hoursTitle: "Часы работы",
+      hour1: "Понедельник - Пятница: 9:00 - 18:00",
+      hour2: "Суббота: 10:00 - 16:00",
+      hour3: "Воскресенье: Выходной",
+      footer: "Все права защищены. Ваша улыбка - наша миссия.",
+      mapTitle: "Расположение клиники",
+    },
+    floating: {
+      bookTitle: "Записаться",
+      telegramTitle: "Написать в Telegram",
+      whatsappTitle: "Написать в WhatsApp",
+      callTitle: "Позвонить",
+    },
+    sticky: {
+      call: "Звонок",
+      book: "Запись",
+      telegram: "Telegram",
+    },
+  },
+  uz: {
+    header: {
+      phone: "+1 (234) 567-890",
+      bookNow: "Qabulga yozilish",
+      switchToLight: "Yorug' rejimga o'tish",
+      switchToDark: "Qorong'i rejimga o'tish",
+      lightMode: "Yorug' rejim",
+      darkMode: "Qorong'i rejim",
+      languageLabel: "Til",
+    },
+    hero: {
+      badge: "Premium stomatologiya",
+      title: "Mukammal tabassumingiz shu yerda boshlanadi",
+      description:
+        "Issiq va samimiy muhitda professional stomatologiya xizmatlari. Biz sizning og'iz salomatligingiz va chiroyli tabassumingiz uchun ishlaymiz.",
+      bookButton: "Qabulga yozilish",
+      callNow: "Hozir qo'ng'iroq qilish",
+      stats: {
+        experienceValue: "10+ yil",
+        experienceLabel: "Tajriba",
+        patientsValue: "5000+",
+        patientsLabel: "Mamnun bemor",
+        ratingValue: "4.9/5",
+        ratingLabel: "Reyting",
+      },
+      trustTitle: "Ishonchli parvarish",
+      trustSince: "2014 yildan beri",
+    },
+    services: {
+      title: "Xizmatlarimiz",
+      subtitle: "Ehtiyojingizga mos kompleks stomatologik xizmatlar",
+      items: [
+        {
+          title: "Tishlarni oqartirish",
+          description:
+            "Yorqin va ishonchli tabassum uchun bir tashrifda professional oqartirish.",
+        },
+        {
+          title: "Dental implantlar",
+          description:
+            "Yo'qolgan tishlar uchun tabiiy ko'rinish va qulaylik beruvchi doimiy yechim.",
+        },
+        {
+          title: "Breket va ortodontiya",
+          description:
+            "Zamonaviy usullar bilan tishlarni tekislash: shaffof va an'anaviy variantlar.",
+        },
+      ],
+    },
+    about: {
+      badge: "Sizning stomatologingiz",
+      title: "Dr. Michael Chen",
+      yearsExperience: "Yillik tajriba",
+      paragraph1:
+        "Dr. Chen 10 yildan ortiq tajribaga ega bo'lib, ehtiyotkor va sifatli davolashni taqdim etadi. U ishonch, muloqot va individual yondashuvga tayanadi.",
+      paragraph2:
+        "Estetik va restavratsion stomatologiyaga ixtisoslashgan holda, eng yaxshi natija uchun zamonaviy texnologiyalardan foydalanadi.",
+      educationTitle: "Yuqori darajadagi ta'lim",
+      educationValue: "Harvard School of Dental Medicine, DDS",
+      specialistTitle: "Sertifikatlangan mutaxassis",
+      specialistValue: "Estetik stomatologiya bo'yicha sertifikat",
+      careTitle: "Bemor markazidagi yondashuv",
+      careValue: "5000+ mamnun bemor",
+    },
+    gallery: {
+      title: "Haqiqiy natijalar",
+      subtitle: "Bemorlarimiz tabassumidagi ajoyib o'zgarishlarni ko'ring",
+      after: "Keyin",
+      before: "Oldin",
+      cases: ["Tish oqartirish", "Tabassumni yangilash"],
+    },
+    testimonials: {
+      title: "Bemorlar fikri",
+      subtitle: "Bizga ishonch bildirgan bemorlarning haqiqiy hikoyalari",
+      texts: [
+        "Dr. Chen va jamoasi tabassumingizni o'zgartirib yubordi! Oqartirish natijasi kutganimdan ham yaxshi bo'ldi.",
+        "Eng yaxshi stomatologiya tajribasi. Klinika zamonaviy, toza va xodimlar juda mehribon. Implantlar juda tabiiy ko'rinadi.",
+        "Katta yoshda breket taqishdan xavotirda edim, ammo jarayon juda qulay o'tdi. Endi yangi tabassumimdan xursandman!",
+      ],
+    },
+    booking: {
+      title: "Qabulga yozilish",
+      subtitle:
+        "Ma'lumotlaringizni qoldiring, tez orada sizga qo'ng'iroq qilamiz",
+      nameLabel: "To'liq ism",
+      namePlaceholder: "Ismingizni kiriting",
+      phoneLabel: "Telefon raqami",
+      submitButton: "Yozilish",
+      notice: "Qabulni tasdiqlash uchun 24 soat ichida siz bilan bog'lanamiz",
+      successTitle: "Rahmat!",
+      successMessage: "Qabulni tasdiqlash uchun tez orada qo'ng'iroq qilamiz.",
+    },
+    contact: {
+      title: "Bizga tashrif buyuring",
+      subtitle:
+        "Shahar markazida joylashganmiz, yetib kelish qulay va avtoturargoh mavjud",
+      addressTitle: "Manzil",
+      addressLine1: "123 Medical Plaza, Suite 456",
+      addressLine2: "Downtown District",
+      addressLine3: "New York, NY 10001",
+      phoneTitle: "Telefon",
+      hoursTitle: "Ish vaqti",
+      hour1: "Dushanba - Juma: 9:00 - 18:00",
+      hour2: "Shanba: 10:00 - 16:00",
+      hour3: "Yakshanba: Dam olish kuni",
+      footer:
+        "Barcha huquqlar himoyalangan. Tabassumingiz - bizning vazifamiz.",
+      mapTitle: "Klinika manzili",
+    },
+    floating: {
+      bookTitle: "Yozilish",
+      telegramTitle: "Telegramda yozish",
+      whatsappTitle: "WhatsAppda yozish",
+      callTitle: "Qo'ng'iroq qilish",
+    },
+    sticky: {
+      call: "Qo'ng'iroq",
+      book: "Yozilish",
+      telegram: "Telegram",
+    },
+  },
+} as const;
