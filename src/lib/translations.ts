@@ -21,13 +21,14 @@ export const translations = {
       stats: {
         experienceValue: "10+ лет",
         experienceLabel: "Опыт",
-        patientsValue: "5000+",
+        patientsValue: "100+",
         patientsLabel: "Довольных пациентов",
         ratingValue: "4.9/5",
         ratingLabel: "Рейтинг",
       },
       trustTitle: "Проверенная забота",
       trustSince: "С 2014 года",
+      heroImageAlt: "Стоматолог работает с пациентом",
     },
     services: {
       title: "Наши услуги",
@@ -63,7 +64,7 @@ export const translations = {
       specialistTitle: "Сертифицированный специалист",
       specialistValue: "Сертификат по эстетической стоматологии",
       careTitle: "Ориентация на пациента",
-      careValue: "Более 5000 довольных пациентов",
+      careValue: "Более 100 довольных пациентов",
     },
     gallery: {
       title: "Реальные результаты",
@@ -140,13 +141,14 @@ export const translations = {
       stats: {
         experienceValue: "10+ yil",
         experienceLabel: "Tajriba",
-        patientsValue: "5000+",
+        patientsValue: "100+",
         patientsLabel: "Mamnun bemor",
         ratingValue: "4.9/5",
         ratingLabel: "Reyting",
       },
       trustTitle: "Ishonchli parvarish",
       trustSince: "2014 yildan beri",
+      heroImageAlt: "Stomatolog bemor tishlarini davolayapti",
     },
     services: {
       title: "Xizmatlarimiz",
@@ -182,7 +184,7 @@ export const translations = {
       specialistTitle: "Sertifikatlangan mutaxassis",
       specialistValue: "Estetik stomatologiya bo'yicha sertifikat",
       careTitle: "Bemor markazidagi yondashuv",
-      careValue: "5000+ mamnun bemor",
+      careValue: "100+ mamnun bemor",
     },
     gallery: {
       title: "Haqiqiy natijalar",

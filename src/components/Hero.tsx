@@ -86,9 +86,9 @@ export function Hero({ onBookClick }: HeroProps) {
           <div className="relative">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1684607632599-748b1792a116?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxkZW50YWwlMjBwYXRpZW50JTIwc21pbGluZyUyMHRlZXRofGVufDF8fHx8MTc3NzI3NjQ4OXww&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Happy patient with beautiful smile"
-                className="w-full h-[400px] sm:h-[500px] lg:h-[600px] object-cover"
+                src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                alt={t.heroImageAlt}
+                className="w-full h-[400px] sm:h-[500px] lg:h-[600px] object-cover object-top"
               />
             </div>
             <div className="absolute -bottom-6 -left-6 bg-white dark:bg-zinc-900 p-6 rounded-2xl shadow-xl dark:shadow-zinc-950/70 hidden sm:block">
