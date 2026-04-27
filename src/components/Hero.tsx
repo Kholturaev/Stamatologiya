@@ -1,6 +1,8 @@
 "use client";
 
 import { Phone, Star, Users, Award } from "lucide-react";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
+import { Reveal } from "@/components/Reveal";
 import { useSiteUI } from "@/components/providers/SiteProvider";
 import { translations } from "@/lib/translations";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
@@ -14,10 +16,13 @@ export function Hero({ onBookClick }: HeroProps) {
   const t = translations[locale].hero;
 
   return (
-    <section className="pt-16 sm:pt-20 bg-gradient-to-b from-blue-50 to-white dark:from-zinc-950 dark:to-zinc-900">
+    <section
+      id="home"
+      className="pt-16 sm:pt-20 scroll-mt-24 bg-gradient-to-b from-blue-50 to-white dark:from-zinc-950 dark:to-zinc-900"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <div className="text-center lg:text-left">
+          <Reveal className="text-center lg:text-left">
             <div className="inline-block bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-300 px-4 py-2 rounded-full text-sm mb-6">
               {t.badge}
             </div>
@@ -33,7 +38,7 @@ export function Hero({ onBookClick }: HeroProps) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
               <button
                 onClick={onBookClick}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg transition-all shadow-lg hover:shadow-xl"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg transition-all shadow-lg hover:shadow-xl animate-soft-attention"
               >
                 {t.bookButton}
               </button>
@@ -52,7 +57,7 @@ export function Hero({ onBookClick }: HeroProps) {
                   <Award className="w-5 h-5 text-blue-600" />
                 </div>
                 <div className="font-bold text-gray-900 dark:text-zinc-100">
-                  {t.stats.experienceValue}
+                  <AnimatedCounter value={10} suffix="+" />
                 </div>
                 <div className="text-sm text-gray-600 dark:text-zinc-400">
                   {t.stats.experienceLabel}
@@ -63,7 +68,7 @@ export function Hero({ onBookClick }: HeroProps) {
                   <Users className="w-5 h-5 text-blue-600" />
                 </div>
                 <div className="font-bold text-gray-900 dark:text-zinc-100">
-                  {t.stats.patientsValue}
+                  <AnimatedCounter value={100} suffix="+" />
                 </div>
                 <div className="text-sm text-gray-600 dark:text-zinc-400">
                   {t.stats.patientsLabel}
@@ -74,16 +79,16 @@ export function Hero({ onBookClick }: HeroProps) {
                   <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
                 </div>
                 <div className="font-bold text-gray-900 dark:text-zinc-100">
-                  {t.stats.ratingValue}
+                  <AnimatedCounter value={4.9} decimals={1} suffix="/5" />
                 </div>
                 <div className="text-sm text-gray-600 dark:text-zinc-400">
                   {t.stats.ratingLabel}
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="relative">
+          <Reveal className="relative" delayMs={120}>
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <ImageWithFallback
                 src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
@@ -91,7 +96,7 @@ export function Hero({ onBookClick }: HeroProps) {
                 className="w-full h-[400px] sm:h-[500px] lg:h-[600px] object-cover object-top"
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 bg-white dark:bg-zinc-900 p-6 rounded-2xl shadow-xl dark:shadow-zinc-950/70 hidden sm:block">
+            <div className="absolute -bottom-6 -left-6 bg-white dark:bg-zinc-900 p-6 rounded-2xl shadow-xl dark:shadow-zinc-950/70 hidden sm:block animate-gentle-bob">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
                   <span className="text-2xl">✓</span>
@@ -106,7 +111,7 @@ export function Hero({ onBookClick }: HeroProps) {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

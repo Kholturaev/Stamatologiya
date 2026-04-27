@@ -2,22 +2,27 @@
 
 import { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
 import { useSiteUI } from "@/components/providers/SiteProvider";
 import { translations } from "@/lib/translations";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
-const beforeAfter = [
+type BeforeAfterSlide = {
+  before: string;
+  after: string;
+  beforePosition?: string;
+  afterPosition?: string;
+};
+
+const beforeAfter: BeforeAfterSlide[] = [
   {
-    before:
-      "https://images.unsplash.com/photo-1664529842482-1ad3ee2d8796?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw0fHx3aGl0ZSUyMHNtaWxlJTIwdGVldGglMjBjbG9zZSUyMHVwfGVufDF8fHx8MTc3NzI3NjQ4OXww&ixlib=rb-4.1.0&q=80&w=1080",
-    after:
-      "https://images.unsplash.com/photo-1677026010083-78ec7f1b84ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHx3aGl0ZSUyMHNtaWxlJTIwdGVldGglMjBjbG9zZSUyMHVwfGVufDF8fHx8MTc3NzI3NjQ4OXww&ixlib=rb-4.1.0&q=80&w=1080",
+    before: "/assets/bafore1.png",
+    after: "/assets/after1.png",
+    afterPosition: "center 24%",
   },
   {
-    before:
-      "https://images.unsplash.com/photo-1663182245833-7dd667277043?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw1fHx3aGl0ZSUyMHNtaWxlJTIwdGVldGglMjBjbG9zZSUyMHVwfGVufDF8fHx8MTc3NzI3NjQ4OXww&ixlib=rb-4.1.0&q=80&w=1080",
-    after:
-      "https://images.unsplash.com/photo-1661438818937-437f1aeaf08e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNtaWxlJTIwdGVldGglMjBjbG9zZSUyMHVwfGVufDF8fHx8MTc3NzI3NjQ4OXww&ixlib=rb-4.1.0&q=80&w=1080",
+    before: "/assets/before2.png",
+    after: "/assets/after2.png",
   },
 ];
 
@@ -53,39 +58,52 @@ export function Gallery() {
   const current = beforeAfter[currentIndex];
 
   return (
-    <section className="py-16 sm:py-24 bg-white dark:bg-zinc-900" id="gallery">
+    <section
+      className="py-16 sm:py-24 scroll-mt-24 bg-white dark:bg-zinc-900"
+      id="gallery"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16">
+        <Reveal className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-zinc-100 mb-4">
             {t.title}
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 dark:text-zinc-300 max-w-2xl mx-auto">
             {t.subtitle}
           </p>
-        </div>
+        </Reveal>
 
-        <div className="max-w-4xl mx-auto">
+        <Reveal className="max-w-4xl mx-auto" delayMs={120}>
           <div className="relative rounded-3xl overflow-hidden shadow-2xl dark:shadow-zinc-950/70 bg-gray-100 dark:bg-zinc-800">
             <div ref={containerRef} className="relative h-[400px] sm:h-[500px]">
+              <div className="absolute inset-0">
+                <ImageWithFallback
+                  src={current.after}
+                  alt={t.after}
+                  className="w-full h-full object-cover"
+                  style={
+                    current.afterPosition
+                      ? { objectPosition: current.afterPosition }
+                      : undefined
+                  }
+                />
+                <div className="absolute top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  {t.after}
+                </div>
+              </div>
+
               <div
                 className="absolute inset-0 overflow-hidden"
                 style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
               >
                 <ImageWithFallback
-                  src={current.after}
-                  alt={t.after}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute top-4 left-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                  {t.after}
-                </div>
-              </div>
-
-              <div className="absolute inset-0">
-                <ImageWithFallback
                   src={current.before}
                   alt={t.before}
                   className="w-full h-full object-cover"
+                  style={
+                    current.beforePosition
+                      ? { objectPosition: current.beforePosition }
+                      : undefined
+                  }
                 />
                 <div className="absolute top-4 left-4 bg-gray-700 text-white px-4 py-2 rounded-full text-sm font-semibold">
                   {t.before}
@@ -157,7 +175,7 @@ export function Gallery() {
               <ChevronRight className="w-6 h-6 text-gray-700 dark:text-zinc-200" />
             </button>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

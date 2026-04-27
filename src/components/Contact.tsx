@@ -1,6 +1,7 @@
 "use client";
 
 import { MapPin, Phone, Clock } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
 import { useSiteUI } from "@/components/providers/SiteProvider";
 import { translations } from "@/lib/translations";
 
@@ -9,19 +10,22 @@ export function Contact() {
   const t = translations[locale].contact;
 
   return (
-    <section className="py-16 sm:py-24 bg-white dark:bg-zinc-900" id="contact">
+    <section
+      className="py-16 sm:py-24 scroll-mt-24 bg-white dark:bg-zinc-900"
+      id="contact"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16">
+        <Reveal className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-zinc-100 mb-4">
             {t.title}
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 dark:text-zinc-300 max-w-2xl mx-auto">
             {t.subtitle}
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-          <div className="space-y-6">
+          <Reveal className="space-y-6">
             <div className="flex items-start gap-4">
               <div className="w-14 h-14 bg-blue-50 dark:bg-blue-950 rounded-2xl flex items-center justify-center flex-shrink-0">
                 <MapPin className="w-7 h-7 text-blue-600" />
@@ -72,9 +76,12 @@ export function Contact() {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl dark:shadow-zinc-950/70 h-[400px] lg:h-full min-h-[400px] bg-gray-100 dark:bg-zinc-800">
+          <Reveal
+            className="relative rounded-3xl overflow-hidden shadow-2xl dark:shadow-zinc-950/70 h-[400px] lg:h-full min-h-[400px] bg-gray-100 dark:bg-zinc-800"
+            delayMs={120}
+          >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.6739764381847!2d-73.98784668459395!3d40.74844097932847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
               width="100%"
@@ -85,7 +92,7 @@ export function Contact() {
               referrerPolicy="no-referrer-when-downgrade"
               title={t.mapTitle}
             />
-          </div>
+          </Reveal>
         </div>
       </div>
 
