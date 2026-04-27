@@ -25,6 +25,7 @@ export function Header({
     { href: "#services", label: t.navServices },
     { href: "#about", label: t.navAbout },
     { href: "#gallery", label: t.navGallery },
+    { href: "#prices", label: t.navPrices },
     { href: "#testimonials", label: t.navTestimonials },
     { href: "#contact", label: t.navContact },
   ];

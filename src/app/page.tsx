@@ -5,6 +5,7 @@ import { Contact } from "@/components/Contact";
 import { FloatingButtons } from "@/components/FloatingButtons";
 import { Gallery } from "@/components/Gallery";
 import { Hero } from "@/components/Hero";
+import { Prices } from "@/components/Prices";
 import { useSiteUI } from "@/components/providers/SiteProvider";
 import { Services } from "@/components/Services";
 import { StickyBottomBar } from "@/components/StickyBottomBar";
@@ -19,6 +20,7 @@ export default function Home() {
       <Services />
       <About />
       <Gallery />
+      <Prices />
       <Testimonials />
       <Contact />
       <FloatingButtons onBookClick={openBooking} />
