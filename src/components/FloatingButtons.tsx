@@ -23,7 +23,7 @@ export function FloatingButtons({ onBookClick }: FloatingButtonsProps) {
       </button>
 
       <a
-        href="https://t.me/yourdentalclinic"
+        href="https://t.me/Kholturaev_A"
         target="_blank"
         rel="noopener noreferrer"
         className="w-14 h-14 bg-blue-500 hover:bg-blue-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all group"

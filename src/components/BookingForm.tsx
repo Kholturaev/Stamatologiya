@@ -14,17 +14,96 @@ export function BookingForm({ isOpen, onClose }: BookingFormProps) {
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastTone, setToastTone] = useState<"success" | "error">("success");
+  const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const showToast = (message: string, tone: "success" | "error") => {
+    setToastMessage(message);
+    setToastTone(tone);
+    window.setTimeout(() => {
+      setToastMessage("");
+    }, 3200);
+  };
+
+  const isValidPhone = (value: string) => {
+    const digits = value.replace(/\D/g, "");
+    return digits.length >= 9 && digits.length <= 15;
+  };
+
+  const resetForm = () => {
+    setName("");
+    setPhone("");
+    setNameError("");
+    setPhoneError("");
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setName("");
-      setPhone("");
-      onClose();
-    }, 2000);
+
+    const trimmedName = name.trim();
+    const trimmedPhone = phone.trim();
+    let hasError = false;
+
+    if (trimmedName.length < 2) {
+      setNameError(t.validationName);
+      hasError = true;
+    } else {
+      setNameError("");
+    }
+
+    if (!isValidPhone(trimmedPhone)) {
+      setPhoneError(t.validationPhone);
+      hasError = true;
+    } else {
+      setPhoneError("");
+    }
+
+    if (hasError) {
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("/api/booking", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: trimmedName,
+          phone: trimmedPhone,
+          locale,
+        }),
+      });
+
+      const data = (await response.json()) as { message?: string };
+
+      if (!response.ok) {
+        const message =
+          data.message ??
+          (response.status === 500 ? t.toastConfigError : t.toastError);
+        showToast(message, "error");
+        return;
+      }
+
+      setSubmitted(true);
+      showToast(data.message ?? t.toastSuccess, "success");
+      resetForm();
+
+      window.setTimeout(() => {
+        setSubmitted(false);
+        onClose();
+      }, 1800);
+    } catch {
+      showToast(t.toastError, "error");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -64,11 +143,23 @@ export function BookingForm({ isOpen, onClose }: BookingFormProps) {
                   type="text"
                   id="name"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    if (nameError) {
+                      setNameError("");
+                    }
+                  }}
                   required
-                  className="w-full px-4 py-3 border-2 border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 rounded-xl focus:border-blue-500 focus:outline-none transition-colors"
+                  className={`w-full px-4 py-3 border-2 bg-white dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 rounded-xl focus:border-blue-500 focus:outline-none transition-colors ${
+                    nameError
+                      ? "border-red-400 dark:border-red-500"
+                      : "border-gray-200 dark:border-zinc-700"
+                  }`}
                   placeholder={t.namePlaceholder}
                 />
+                {nameError ? (
+                  <p className="mt-2 text-sm text-red-500">{nameError}</p>
+                ) : null}
               </div>
 
               <div>
@@ -82,18 +173,31 @@ export function BookingForm({ isOpen, onClose }: BookingFormProps) {
                   type="tel"
                   id="phone"
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  onChange={(e) => {
+                    setPhone(e.target.value);
+                    if (phoneError) {
+                      setPhoneError("");
+                    }
+                  }}
                   required
-                  className="w-full px-4 py-3 border-2 border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 rounded-xl focus:border-blue-500 focus:outline-none transition-colors"
-                  placeholder="+1 (234) 567-890"
+                  className={`w-full px-4 py-3 border-2 bg-white dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 rounded-xl focus:border-blue-500 focus:outline-none transition-colors ${
+                    phoneError
+                      ? "border-red-400 dark:border-red-500"
+                      : "border-gray-200 dark:border-zinc-700"
+                  }`}
+                  placeholder={t.phonePlaceholder}
                 />
+                {phoneError ? (
+                  <p className="mt-2 text-sm text-red-500">{phoneError}</p>
+                ) : null}
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl text-lg font-semibold transition-all shadow-lg hover:shadow-xl"
+                disabled={isLoading}
+                className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed text-white py-4 rounded-xl text-lg font-semibold transition-all shadow-lg hover:shadow-xl"
               >
-                {t.submitButton}
+                {isLoading ? t.submittingButton : t.submitButton}
               </button>
             </form>
 
@@ -115,6 +219,18 @@ export function BookingForm({ isOpen, onClose }: BookingFormProps) {
           </div>
         )}
       </div>
+
+      {toastMessage ? (
+        <div className="fixed top-4 right-4 z-[60] max-w-sm">
+          <div
+            className={`rounded-2xl px-4 py-3 shadow-2xl text-white ${
+              toastTone === "success" ? "bg-green-600" : "bg-red-500"
+            }`}
+          >
+            {toastMessage}
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
